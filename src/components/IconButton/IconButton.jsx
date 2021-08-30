@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import addClassNames from '../../utils/addClassNames';
+import style from '../IconButton/IconButton.module.css'
 
-export const deleteContactButtonNames = addClassNames(
-    'button'
+export const deleteContactBtnClassNames = addClassNames(
+  "button",
+  style.iconButton,
+  style.deleteContactBtn
 );
 
 const IconButton = ({

@@ -1,8 +1,9 @@
 import addClassNames from "../../utils/addClassNames";
 import PropTypes from 'prop-types';
+import style from '../Button/Button.module.css';
 
 const Button = ({ children, type }) => {
-    const buttonClassNames = addClassNames('button');
+    const buttonClassNames = addClassNames('button', style.addContactButton);
     
     return (<button type={type} className={buttonClassNames}>
         {children}
