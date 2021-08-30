@@ -6,11 +6,25 @@ import Filter from "./components/Filter/Filter";
 
 class App extends Component {
   state = {
-    contacts: [
-    ],
+    contacts: [],
     filter: "",
   };
-  static propTypes = {};
+
+  componentDidMount() {
+    const addedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (addedContacts) {
+      this.setState({ contacts: addedContacts });
+    }
+  }
+  componentDidUpdate(prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+    if (this.state.contacts.length === 0) {
+      localStorage.removeItem('contacts');
+    }
+  }
+  // static propTypes = {};
 
   addContact = (name, number) => {
     const contactsItem = {
