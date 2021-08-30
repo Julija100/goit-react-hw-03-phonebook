@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types'
+import addClassNames from '../../utils/addClassNames';
 import style from '../ContactsList/ContactsList.module.css'
 
 const ContactsList = ({ contacts, deleteContactsButton }) => {
+  const contactsListNames = addClassNames('list');
+  const contactNameNames = addClassNames('link');
   return (
-    <ul className = { style.contactsList}>
+    <ul className={contactsListNames}>
       {contacts.map(({ id, name, number }) => (
-        <li key={id} className={ style.contactsList}>
+        <li key={id} className={style.contactsList}>
           <p>{name} - </p>
-          <p>{number}- </p>
+          <a href={`telephone: ${number}`} className={contactNameNames}>{number}</a>
+       
           <button
-            className={ style.contactsButton}
+            className={style.contactsButton}
             type="button"
             onClick={() => deleteContactsButton(id)}
             aria-label="Delete contact button"

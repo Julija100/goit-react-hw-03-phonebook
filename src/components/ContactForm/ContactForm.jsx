@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import style from '../ContactForm/ContactForm.module.css'
+import PropTypes from 'prop-types';
+import Button from "../Button";
 
 class ContactForm extends Component {
   state = {
     name: "",
     number: "",
   };
+
+  static propTypes = {
+    onSubmitData: PropTypes.func.isRequired,
+  };
+
   onInputChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -46,10 +53,7 @@ class ContactForm extends Component {
             onChange={this.onInputChange}
           />
         </label>
-        <button
-          className={style.formButton}
-          type="submit">Add contact
-        </button>
+        <Button type = 'submit'>Add contact</Button>
       </form>
     );
   }
